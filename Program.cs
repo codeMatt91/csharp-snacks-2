@@ -36,6 +36,11 @@ namespace csharp_snacks_2 // Note: actual namespace depends on the project name.
             //Console.WriteLine(acc2(10));
 
 
+
+
+
+
+
             // Data una lista di interi, metterli tutti al quadrato
 
             List<int> list = new List<int>() { 2,3,4,5,6,7,8,9 };
@@ -55,6 +60,11 @@ namespace csharp_snacks_2 // Note: actual namespace depends on the project name.
                 }
                 return vs;
             }
+
+
+
+
+
 
             // REALIZZARE UN METODO CHE ESEGUE LA FUNZIONE AL CUBO
             List<int> list3 = MettiAlCubo(list);
@@ -76,6 +86,12 @@ namespace csharp_snacks_2 // Note: actual namespace depends on the project name.
 
 
 
+            Console.WriteLine("-----------------------------------------------------------------");
+
+
+
+
+
             //Abbiamo in questo modo costruito una funzione "generale" per trasformare
             //tutti gli elementi di una stringa da numero intero a numero intero => nuovo = f(vecchio);
             //Purtroppo per come è stata costruita, questa funzione si applica esclusivamente alle lista di numeri interi 
@@ -90,7 +106,13 @@ namespace csharp_snacks_2 // Note: actual namespace depends on the project name.
             List<int> lcalcolo = EseguiIlCalcolo(list, (n) => n * (n + 1) / 2);
             foreach (int n in lcalcolo)
                 Console.WriteLine(n);
-            
+
+
+
+
+            Console.WriteLine("-----------------------------------------------------------------");
+
+
 
             // La funzione Select ci permette di fare quello che abbiamo fatto sopra ma in una riga
 
@@ -99,6 +121,10 @@ namespace csharp_snacks_2 // Note: actual namespace depends on the project name.
             {
                 Console.WriteLine(n);
             }
+
+
+            Console.WriteLine("-----------------------------------------------------------------");
+
 
 
 
@@ -115,25 +141,68 @@ namespace csharp_snacks_2 // Note: actual namespace depends on the project name.
             //Girare al contrario una lista 
             list.Reverse();
 
+
+
+            Console.WriteLine("-----------------------------------------------------------------");
+
+
+
+
             // Data una lista di stringhe ordinarla e stamparla in ordine descrescente 
             List<string> strList = new List<string>() { "uno", "due", "tre", "quattro", "cinque", "sei", "sette", "quattordici" };
 
-            strList.Sort( (string v1, string v2) => 
+
+            SortedSet<string> strSortedSet = new SortedSet<string>() { "uno", "due", "tre", "quattro", "cinque", "sei", "sette", "quattordici" };
+            foreach (string str in strSortedSet)
+                Console.WriteLine(str);
+
+            strList.Sort((string v1, string v2) => v1.CompareTo(v2)); // Stesso metodo di sopra ma con la funzione "CompareTo" che compara in modo alfabetico le stringhe
+
+
+
+            strList.Sort( (string v1, string v2) =>  // Qui il metodo compara le stringhe in base alla loro lubnghezza. Posso applicarl a atantissimi campi 
             {
                 if (v1.Length > v2.Length)
                     return -1;
                 else if (v1.Length == v2.Length)
                     return 0;
                 else
-                    return 1;
+                   return 1;
             });
 
             foreach (string str in strList)
                 Console.WriteLine(str);
 
+
+            Console.WriteLine("-----------------------------------------------------------------");
+
+
+            // Data una lista di coppie <string, int> stamparle ordinate rispetto alla stringa 
+            //una coppia in C# si dichiara con Tuple<string, int>
+
+            List<Tuple<string, int>> lcoppie = new List<Tuple<string, int>>() {             
+                new Tuple<string, int>("uno", 1),
+                new Tuple<string, int>("due", 21),
+                new Tuple<string, int>("quattro", 41),
+                new Tuple<string, int>("sette", 71),
+                new Tuple<string, int>("diciannove", 191),
+            };
+
+
+            lcoppie.Sort(Comparer<Tuple<string, int>>.Default);
+            foreach (Tuple<string, int> str in lcoppie)
+                Console.WriteLine(str);
+
+
+
+
+
+
+
+
             //IMPORTANTISSIMO = La funzione "Select" equivale alla funzione Map in javascript e la funzione "Where" equivale alla funzione Filter in javascript
 
-            
+
         }
     }
 }
