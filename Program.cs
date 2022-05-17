@@ -107,6 +107,33 @@ namespace csharp_snacks_2 // Note: actual namespace depends on the project name.
             var myList = list.Where(n => (n % 2) == 0);
             foreach (int n in myList)
                 Console.WriteLine(n);
+
+
+            // Ordinare una lista di interi 
+            list.Sort();
+
+            //Girare al contrario una lista 
+            list.Reverse();
+
+            // Data una lista di stringhe ordinarla e stamparla in ordine descrescente 
+            List<string> strList = new List<string>() { "uno", "due", "tre", "quattro", "cinque", "sei", "sette", "quattordici" };
+
+            strList.Sort( (string v1, string v2) => 
+            {
+                if (v1.Length > v2.Length)
+                    return -1;
+                else if (v1.Length == v2.Length)
+                    return 0;
+                else
+                    return 1;
+            });
+
+            foreach (string str in strList)
+                Console.WriteLine(str);
+
+            //IMPORTANTISSIMO = La funzione "Select" equivale alla funzione Map in javascript e la funzione "Where" equivale alla funzione Filter in javascript
+
+            
         }
     }
 }
