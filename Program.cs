@@ -91,6 +91,22 @@ namespace csharp_snacks_2 // Note: actual namespace depends on the project name.
             foreach (int n in lcalcolo)
                 Console.WriteLine(n);
             
+
+            // La funzione Select ci permette di fare quello che abbiamo fatto sopra ma in una riga
+
+            var nCubo = list.Select(x => x * x);
+            foreach (int n in nCubo)
+            {
+                Console.WriteLine(n);
+            }
+
+
+
+            // data una lista di interi estraggo solo quelli con indice dispari
+
+            var myList = list.Where(n => (n % 2) == 0);
+            foreach (int n in myList)
+                Console.WriteLine(n);
         }
     }
 }
